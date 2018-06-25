@@ -32,14 +32,12 @@ app.get('/todos', (req, res) => {
   })
 });
 
-// 5b2f8676ec8e1e2c5cda5955
 
-// GET   /todos/1234324
 app.get('/todos/:id', (req, res) => {
   let id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
-    res.status(400).send('ID not valid');
+    res.status(404).send('ID not valid');
   }
   
   Todo.findById(id).then((todo) => {
